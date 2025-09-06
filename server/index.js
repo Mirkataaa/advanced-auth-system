@@ -6,6 +6,7 @@ import { connectDB } from "./db/connectDB.js";
 
 dotenv.config();
 const app = express();
+const PORT = process.env.PORT || 3030;
 
 app.get("/", (req, res) => {
   res.send("hello");
@@ -13,7 +14,7 @@ app.get("/", (req, res) => {
 
 app.use('/api/auth' , authRoutes );
 
-app.listen(3030, () => {
+app.listen(PORT, () => {
   connectDB();
-  console.log("Server is running on port 3030");
+  console.log("Server is running on port:" , PORT);
 });
