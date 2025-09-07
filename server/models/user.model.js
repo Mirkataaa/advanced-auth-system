@@ -28,7 +28,7 @@ const userSchema = new Schema(
     verificationToken: String,
     verificationTokenExpiresAt: Date,
   },
-  { timestamps: trueX }
+  { timestamps: true }
 );
 
-export const user = model('User' , userSchema);
+export const User = model('User' , userSchema);
