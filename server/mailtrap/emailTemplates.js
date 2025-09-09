@@ -95,68 +95,65 @@ export const PASSWORD_RESET_REQUEST_TEMPLATE = `
 `;
 
 export const WELCOME_EMAIL_TEMPLATE = `
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome — Example</title>
 </head>
-<body style="font-family: Arial, sans-serif; background: linear-gradient(to bottom right, #f1f5f9, #ffffff, #f8fafc); color: #1e293b; margin:0; padding: 40px 0;">
-  <center>
-    <table role="presentation" style="width:100%; max-width:680px; margin:0 auto;" cellpadding="0" cellspacing="0">
+<body class="bg-gradient-to-br from-slate-100 via-white to-slate-50 text-slate-800">
+  <center class="py-10">
+    <table role="presentation" class="email-container w-full" cellpadding="0" cellspacing="0">
       <tr>
-        <td style="background-color:#ffffff; border-radius:20px; box-shadow:0 4px 20px rgba(0,0,0,0.08); overflow:hidden;">
-          
+        <td class="bg-white rounded-3xl shadow-xl overflow-hidden">
+
           <!-- Header Banner -->
-          <div style="background: linear-gradient(to right, #06b6d4, #2563eb); color:white; padding:40px 20px; text-align:center;">
-            <h1 style="margin:0; font-size:28px; font-weight:bold;">🎉 Welcome Aboard, {name}!</h1>
-            <p style="margin:8px 0 0; font-size:14px; opacity:0.9;">Your journey with us starts today</p>
+          <div class="bg-gradient-to-r from-cyan-500 to-blue-600 text-white py-8 text-center">
+            <h1 class="text-3xl font-bold tracking-tight">🎉 Welcome Aboard, {name}!</h1>
+            <p class="text-sm opacity-90 mt-1">Your journey with us starts today</p>
           </div>
 
           <!-- Body -->
-          <div style="padding:32px 24px;">
-            <p style="font-size:15px; color:#475569; line-height:1.6; margin:0 0 24px;">
+          <div class="p-8">
+            <p class="text-slate-600 leading-relaxed mb-6 text-base">
               We're thrilled to have you join us. Here’s how to make the most out of your new account:
             </p>
 
             <!-- Features -->
-            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:32px;">
-              <tr>
-                <td style="padding:16px; border:1px solid #e5e7eb; border-radius:12px; text-align:center;">
-                  <div style="font-size:24px; margin-bottom:8px;">👤</div>
-                  <h3 style="margin:0; font-size:14px; font-weight:600;">Profile</h3>
-                  <p style="margin:4px 0 0; font-size:12px; color:#64748b;">Set up your profile and make it truly yours.</p>
-                </td>
-                <td style="width:16px;"></td>
-                <td style="padding:16px; border:1px solid #e5e7eb; border-radius:12px; text-align:center;">
-                  <div style="font-size:24px; margin-bottom:8px;">🚀</div>
-                  <h3 style="margin:0; font-size:14px; font-weight:600;">Explore</h3>
-                  <p style="margin:4px 0 0; font-size:12px; color:#64748b;">Dive into the dashboard and discover new tools.</p>
-                </td>
-                <td style="width:16px;"></td>
-                <td style="padding:16px; border:1px solid #e5e7eb; border-radius:12px; text-align:center;">
-                  <div style="font-size:24px; margin-bottom:8px;">💬</div>
-                  <h3 style="margin:0; font-size:14px; font-weight:600;">Support</h3>
-                  <p style="margin:4px 0 0; font-size:12px; color:#64748b;">Need help? Our team is here for you anytime.</p>
-                </td>
-              </tr>
-            </table>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+              <div class="p-4 rounded-2xl bg-gradient-to-br from-slate-50 to-white border shadow-sm hover:shadow-md transition">
+                <div class="text-2xl mb-2">👤</div>
+                <h3 class="text-sm font-semibold mb-1">Profile</h3>
+                <p class="text-xs text-slate-500">Set up your profile and make it truly yours.</p>
+              </div>
+              <div class="p-4 rounded-2xl bg-gradient-to-br from-slate-50 to-white border shadow-sm hover:shadow-md transition">
+                <div class="text-2xl mb-2">🚀</div>
+                <h3 class="text-sm font-semibold mb-1">Explore</h3>
+                <p class="text-xs text-slate-500">Dive into the dashboard and discover new tools.</p>
+              </div>
+              <div class="p-4 rounded-2xl bg-gradient-to-br from-slate-50 to-white border shadow-sm hover:shadow-md transition">
+                <div class="text-2xl mb-2">💬</div>
+                <h3 class="text-sm font-semibold mb-1">Support</h3>
+                <p class="text-xs text-slate-500">Need help? Our team is here for you anytime.</p>
+              </div>
+            </div>
 
             <!-- CTA -->
-            <div style="text-align:center; margin-bottom:32px;">
-              <a href="{{gettingStartedUrl}}" 
-                 style="display:inline-block; padding:14px 28px; border-radius:14px; background: linear-gradient(to right, #06b6d4, #0ea5e9, #2563eb); color:#ffffff; font-size:15px; font-weight:bold; text-decoration:none; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+            <div class="text-center mb-8">
+              <a href="{{gettingStartedUrl}}"
+                 class="inline-block px-8 py-3 rounded-2xl font-semibold text-white shadow-lg no-underline
+                        bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-600 hover:opacity-90 transition">
                 Get Started
               </a>
             </div>
 
             <!-- Footer -->
-            <div style="font-size:12px; color:#64748b; line-height:1.5;">
-              <p style="margin:0 0 8px;">Need anything? Just reply to this email or visit our 
-                <a href="{{supportUrl}}" style="color:#0ea5e9; text-decoration:underline;">Help Center</a>.
+            <div class="text-xs text-slate-500 leading-relaxed">
+              <p class="mb-2">Need anything? Just reply to this email or visit our 
+                <a href="{{supportUrl}}" class="text-sky-600 underline">Help Center</a>.
               </p>
-              <p style="margin:0;">© Example, Inc. All rights reserved.</p>
+              <p class="mb-0">© Example, Inc. All rights reserved.</p>
             </div>
           </div>
         </td>
@@ -164,9 +161,9 @@ export const WELCOME_EMAIL_TEMPLATE = `
 
       <!-- Unsubscribe -->
       <tr>
-        <td style="padding-top:24px; text-align:center; font-size:11px; color:#94a3b8;">
-          <p style="margin:0;">You’re receiving this email because you signed up for Example. 
-            If you’d rather not receive these, <a href="{{unsubscribeUrl}}" style="text-decoration:underline; color:#64748b;">unsubscribe</a>.
+        <td class="pt-6 text-xs text-slate-400 text-center">
+          <p class="mb-0">You’re receiving this email because you signed up for Example. 
+            If you’d rather not receive these, <a href="{{unsubscribeUrl}}" class="underline">unsubscribe</a>.
           </p>
         </td>
       </tr>
@@ -174,4 +171,4 @@ export const WELCOME_EMAIL_TEMPLATE = `
   </center>
 </body>
 </html>
-`;
+`
