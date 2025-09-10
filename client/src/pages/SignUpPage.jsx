@@ -2,7 +2,7 @@ import * as motion from "motion/react-client"
 import InputComponent from "../components/InputComponent";
 import { Lock, Mail, User } from 'lucide-react'
 import { useState } from "react";
-import {Link} from "react-router"
+import { Link } from "react-router"
 import PasswordStrengthMeterComponent from "../components/PasswordStrengthMeterComponent";
 
 export default function SignUpPage() {
@@ -49,7 +49,7 @@ export default function SignUpPage() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                    <PasswordStrengthMeterComponent />
+                    <PasswordStrengthMeterComponent password={password} />
 
 
                     <motion.button
