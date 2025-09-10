@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from 'dotenv';
+import cookieParser from "cookie-parser";
 import authRoutes from './routes/auth.route.js';
 
 import { connectDB } from "./db/connectDB.js";
@@ -9,6 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 3030;
 
 app.use(express.json());
+app.use(cookieParser());
 
 app.get("/", (req, res) => {
   res.send("hello");
