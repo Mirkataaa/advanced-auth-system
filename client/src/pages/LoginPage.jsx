@@ -1,4 +1,4 @@
-import * as motion from "motion/react-client"
+import * as Motion from "motion/react-client"
 import { Mail, Lock, Loader } from "lucide-react";
 import { useState } from "react"
 import { Link } from "react-router";
@@ -15,7 +15,7 @@ export default function LoginPage() {
         e.preventDefault();
     }
     return (
-        <motion.div
+        <Motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -49,7 +49,7 @@ export default function LoginPage() {
                         </Link>
                     </div>
 
-                    <motion.button
+                    <Motion.button
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         className='w-full py-3 px-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-lg shadow-lg hover:from-green-600 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-200'
@@ -57,7 +57,7 @@ export default function LoginPage() {
                         disabled={isLoading}
                     >
                         {isLoading ? <Loader className='w-6 h-6 animate-spin  mx-auto' /> : "Login"}
-                    </motion.button>
+                    </Motion.button>
                 </form>
             </div>
             <div className='px-8 py-4 bg-gray-900 bg-opacity-50 flex justify-center'>
@@ -70,7 +70,7 @@ export default function LoginPage() {
             </div>
 
 
-        </motion.div>
+        </Motion.div>
     )
 
 

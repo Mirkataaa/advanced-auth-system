@@ -1,13 +1,14 @@
-import * as motion from "motion/react-client"
+import * as Motion from "motion/react-client"
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router";
+import { useAuthStore } from "../store/authStore";
 
 export default function EmailVerificationPage() {
 
     const [code, setCode] = useState(['', '', '', '', '', '',]);
     const inputRefs = useRef([]);
     const navigate = useNavigate();
-    const isLoading = false;
+    const { error, isLoading, verifyEmail } = useAuthStore();
 
     const handleChange = (index, value) => {
         const newCode = [...code];
@@ -43,11 +44,21 @@ export default function EmailVerificationPage() {
         }
     }
 
-    const handleSubmit = useCallback((e) => {
+    const handleSubmit = useCallback(async (e) => {
         e.preventDefault();
-        const verificationCode = code.join('');
-        console.log(`Verification code submitted: ${verificationCode}`);
-    }, [code]); // depends on `code
+        const verificationToken = code.join('');
+
+        try {
+            await verifyEmail(verificationToken);
+            navigate('/');
+            // TODO: Add toast later
+            alert('Email verified successfully');
+        } catch (error) {
+            console.log(error);
+
+        }
+        console.log(`Verification code submitted: ${verificationToken}`);
+    }, [code, navigate, verifyEmail]); // depends on `code
 
     // auto submit 
     useEffect(() => {
@@ -58,7 +69,7 @@ export default function EmailVerificationPage() {
 
     return (
         <div className='max-w-md w-full bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-xl rounded-2xl shadow-xl overflow-hidden'>
-            <motion.div
+            <Motion.div
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -87,8 +98,8 @@ export default function EmailVerificationPage() {
                         ))}
 
                     </div>
-
-                    <motion.button
+                    {error && <p className='text-red-500 font-semibold mt-2'>{error}</p>}
+                    <Motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         type='submit'
@@ -96,9 +107,9 @@ export default function EmailVerificationPage() {
                         className='w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:from-green-600 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 disabled:opacity-50'
                     >
                         {isLoading ? "Verifying..." : "Verify Email"}
-                    </motion.button>
+                    </Motion.button>
                 </form>
-            </motion.div>
+            </Motion.div>
         </div>
     );
 };

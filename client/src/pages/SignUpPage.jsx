@@ -1,4 +1,4 @@
-import * as motion from "motion/react-client"
+import * as Motion from "motion/react-client"
 import InputComponent from "../components/InputComponent";
 import { Loader, Lock, Mail, User } from 'lucide-react'
 import { useState } from "react";
@@ -11,7 +11,7 @@ export default function SignUpPage() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { signup , error , isLoading} = useAuthStore();
+    const { signup, error, isLoading } = useAuthStore();
     const navigate = useNavigate();
 
     const handleSignUp = async (e) => {
@@ -22,11 +22,11 @@ export default function SignUpPage() {
             navigate("/verify-email");
         } catch (error) {
             console.log(error);
-            
+
         }
     }
     return (
-        <motion.div
+        <Motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -65,7 +65,7 @@ export default function SignUpPage() {
                     <PasswordStrengthMeterComponent password={password} />
 
 
-                    <motion.button
+                    <Motion.button
                         className='mt-5 w-full py-3 px-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white 
 						font-bold rounded-lg shadow-lg hover:from-green-600
 						hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2
@@ -75,8 +75,8 @@ export default function SignUpPage() {
                         type="submit"
                         disabled={isLoading}
                     >
-                        {isLoading ? <Loader className="animate-spin mx-auto size-24"/> : "Sign Up"}
-                    </motion.button>
+                        {isLoading ? <Loader className="animate-spin mx-auto size-24" /> : "Sign Up"}
+                    </Motion.button>
                 </form>
             </div>
 
@@ -87,6 +87,6 @@ export default function SignUpPage() {
                 </p>
             </div>
 
-        </motion.div>
+        </Motion.div>
     )
 };
