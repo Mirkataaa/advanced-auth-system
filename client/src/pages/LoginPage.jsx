@@ -1,18 +1,28 @@
 import * as Motion from "motion/react-client"
 import { Mail, Lock, Loader } from "lucide-react";
 import { useState } from "react"
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import InputComponent from "../components/InputComponent";
+import { useAuthStore } from "../store/authStore";
 
 
 export default function LoginPage() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const isLoading = false;
+    const { login, isLoading, error } = useAuthStore();
+    const navigate = useNavigate();
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
+
+        try {
+            await login(email, password);
+            navigate("/")
+        } catch (error) {
+            console.log(error);
+            
+        }
     }
     return (
         <Motion.div
@@ -48,7 +58,7 @@ export default function LoginPage() {
                             Forgot password?
                         </Link>
                     </div>
-
+                    {error && <p className='text-red-500 font-semibold mb-2'>{error}</p>}
                     <Motion.button
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
