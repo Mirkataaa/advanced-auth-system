@@ -6,6 +6,7 @@ import EmailVerificationPage from "./pages/EmailVerificationPage"
 import { useAuthStore } from "./store/authStore"
 import HomePage from "./pages/HomePage"
 import { useEffect } from "react"
+import ForgotPasswordPage from "./pages/ForgotPasswordPage"
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, user } = useAuthStore();
@@ -76,6 +77,13 @@ function App() {
             </RedirectAuthenticatedUSer>
           } />
         <Route path="/verify-email" element={<EmailVerificationPage />} />
+        <Route
+          path="/forgot-password"
+          element={
+            <RedirectAuthenticatedUSer>
+              <ForgotPasswordPage />
+            </RedirectAuthenticatedUSer>
+          } />
         <Route path="*" element={<Navigate to={'/'} replace />} />
       </Routes>
     </div>
